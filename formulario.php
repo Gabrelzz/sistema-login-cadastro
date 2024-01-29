@@ -1,3 +1,55 @@
+<?php
+
+if (isset($_POST['enviar'])){
+    //print_r($_POST['nome']);
+    //print_r('<br>');
+    //print_r($_POST['email']);
+    //print_r('<br>');
+    //print_r($_POST['telefone']);
+    //print_r('<br>');
+    //print_r($_POST['genero']);
+    //print_r('<br>');
+    //print_r($_POST['data-nascimento']);
+    //print_r('<br>');
+    //print_r($_POST['cidade']);
+    //print_r('<br>');
+    //print_r($_POST['estado']);
+    //print_r('<br>');
+    //print_r($_POST['endereco']);
+
+    require_once('config.php');
+
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $telefone = $_POST['telefone'];
+    $genero = $_POST['genero'];
+    $dataNascimento = $_POST['data-nascimento'];
+    $cidade = $_POST['cidade'];
+    $estado = $_POST['estado'];
+    $endereco = $_POST['endereco'];
+
+    $inserir = "INSERT INTO usuarios (nome, email, telefone, genero, data_nascimento, cidade, estado, endereco)
+    VALUES (:nome, :email, :telefone, :genero, :data_nascimento, :cidade, :estado, :endereco)";
+    $stmt = $conn->prepare($inserir);
+    $stmt->bindParam(":nome", $nome);
+    $stmt->bindParam(":email", $email);
+    $stmt->bindParam(":telefone", $telefone);
+    $stmt->bindParam(":genero", $genero);
+    $stmt->bindParam(":data_nascimento", $dataNascimento);
+    $stmt->bindParam(":cidade", $cidade);
+    $stmt->bindParam(":estado", $estado);
+    $stmt->bindParam(":endereco", $endereco);
+    $stmt->execute();
+    if ($stmt->rowCount() > 0) {
+        echo "Inserção feita com sucesso." . PHP_EOL;
+    } else {
+        echo "Erro na inserção." . PHP_EOL;
+    }
+}
+
+$conn = null;
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,7 +60,7 @@
 </head>
 <body>
     <div class ="box">
-        <form action="">
+        <form action="formulario.php" method="post">
             <fieldset>
             <legend><b>Cadastro de Clientes</b></legend>
             <br>
