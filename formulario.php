@@ -21,6 +21,7 @@ if (isset($_POST['enviar'])){
 
     $nome = $_POST['nome'];
     $email = $_POST['email'];
+    $senha = $_POST['senha'];
     $telefone = $_POST['telefone'];
     $genero = $_POST['genero'];
     $dataNascimento = $_POST['data-nascimento'];
@@ -28,11 +29,12 @@ if (isset($_POST['enviar'])){
     $estado = $_POST['estado'];
     $endereco = $_POST['endereco'];
 
-    $inserir = "INSERT INTO usuarios (nome, email, telefone, genero, data_nascimento, cidade, estado, endereco)
-    VALUES (:nome, :email, :telefone, :genero, :data_nascimento, :cidade, :estado, :endereco)";
+    $inserir = "INSERT INTO usuarios (nome, email, senha, telefone, genero, data_nascimento, cidade, estado, endereco)
+    VALUES (:nome, :email, :senha, :telefone, :genero, :data_nascimento, :cidade, :estado, :endereco)";
     $stmt = $conn->prepare($inserir);
     $stmt->bindParam(":nome", $nome);
     $stmt->bindParam(":email", $email);
+    $stmt->bindParam(":senha", $senha);
     $stmt->bindParam(":telefone", $telefone);
     $stmt->bindParam(":genero", $genero);
     $stmt->bindParam(":data_nascimento", $dataNascimento);
@@ -59,6 +61,7 @@ $conn = null;
     <link rel="stylesheet" href="css/style-form.css">
 </head>
 <body>
+    <a href="home.php" id="voltar">Voltar</a>
     <div class ="box">
         <form action="formulario.php" method="post">
             <fieldset>
@@ -72,6 +75,11 @@ $conn = null;
             <div class="inputBox">
                 <input type="text" name="email" id="email" class="inputUser" required>
                 <label for="email" class="labelInput">Email</label>
+            </div>
+            <br><br>
+            <div class="inputBox">
+                <input type="password" name="senha" id="senha" class="inputUser" required>
+                <label for="senha" class="labelInput">Senha</label>
             </div>
             <br><br>
             <div class="inputBox">    

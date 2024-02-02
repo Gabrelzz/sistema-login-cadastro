@@ -10,13 +10,16 @@
     </style>
 </head>
 <body>
+    <a href="home.php">Voltar</a>
     <div class="tela-login">
         <h1>Login</h1>
-        <input type="text" placeholder="Nome">
-        <br><br>
-        <input type="password" placeholder="Senha">
-        <br><br>
-        <button>Enviar</button>
+        <form action ="loginTest.php" method="POST">
+            <input type="email" name="email" placeholder="Email">
+            <br><br>
+            <input type="password" name="senha" placeholder="Senha">
+            <br><br>
+            <input type="submit" name="enviar" id="enviar">
+        </form>
     </div>
 </body>
 </html>
