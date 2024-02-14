@@ -1,27 +1,13 @@
 <?php
 
 if (isset($_POST['enviar'])){
-    //print_r($_POST['nome']);
-    //print_r('<br>');
-    //print_r($_POST['email']);
-    //print_r('<br>');
-    //print_r($_POST['telefone']);
-    //print_r('<br>');
-    //print_r($_POST['genero']);
-    //print_r('<br>');
-    //print_r($_POST['data-nascimento']);
-    //print_r('<br>');
-    //print_r($_POST['cidade']);
-    //print_r('<br>');
-    //print_r($_POST['estado']);
-    //print_r('<br>');
-    //print_r($_POST['endereco']);
 
     require_once('config.php');
 
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
+    $confSenha = $_POST['confSenha'];
     $telefone = $_POST['telefone'];
     $genero = $_POST['genero'];
     $dataNascimento = $_POST['data-nascimento'];
@@ -42,10 +28,15 @@ if (isset($_POST['enviar'])){
     $stmt->bindParam(":estado", $estado);
     $stmt->bindParam(":endereco", $endereco);
     $stmt->execute();
-    if ($stmt->rowCount() > 0) {
-        echo "Inserção feita com sucesso." . PHP_EOL;
-    } else {
-        echo "Erro na inserção." . PHP_EOL;
+    if($_POST['senha'] != $_POST['confSenha']){
+        header('Location: cadastroErro.php');
+        exit();
+    }else{
+        if ($stmt->rowCount() > 0) {
+            header('Location: cadastroSucesso.php');
+        } else {
+            header('Location: cadastroErro.php');
+        }
     }
 }
 
@@ -61,7 +52,9 @@ $conn = null;
     <link rel="stylesheet" href="css/style-form.css">
 </head>
 <body>
-    <a href="home.php" id="voltar">Voltar</a>
+    <p class ="botao">
+    <a id="voltar" href="home.php" role="button">Voltar</a>
+    </p>
     <div class ="box">
         <form action="formulario.php" method="post">
             <fieldset>
@@ -80,6 +73,11 @@ $conn = null;
             <div class="inputBox">
                 <input type="password" name="senha" id="senha" class="inputUser" required>
                 <label for="senha" class="labelInput">Senha</label>
+            </div>
+            <br><br>
+            <div class="inputBox">
+                <input type="password" name="confSenha" id="confSenha" class="inputUser" required>
+                <label for="confSenha" class="labelInput">Confirmar Senha</label>
             </div>
             <br><br>
             <div class="inputBox">    

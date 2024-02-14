@@ -1,5 +1,5 @@
 <?php
-
+session_start();
     if (isset($_POST['enviar']) && !empty($_POST['email']) && !empty($_POST['senha'])){
 
         require_once('config.php');
@@ -13,11 +13,21 @@
         
         $contagem = $stmt->rowCount();
         if ($contagem < 1){
-            echo "Não existe cadastro!";
+
+            unset($_SESSION['email']);
+            unset($_SESSION['senha']);
+            
+            header('Location: login.php');
+
         }else{
-            echo "Possui cadastro!";
+
+            $_SESSION['email'] = $email;
+            $_SESSION['senha'] = $senha;
+
+            header('Location: sistema.php');
         }
         print_r($stmt);
+
 
     }else{
         header('Location: login.php');
