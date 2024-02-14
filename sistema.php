@@ -36,7 +36,7 @@ if (!isset($_SESSION['email']) == true AND (!isset($_SESSION['senha'])) == true)
             </li>
         </ul>
         <form class="d-flex">
-            <a href="" class="btn btn-danger me-5">Sair</a>
+            <a href="sair.php" class="btn btn-danger me-5">Sair</a>
         </form>
         </div>
     </div>

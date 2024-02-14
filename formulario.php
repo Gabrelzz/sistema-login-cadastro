@@ -30,7 +30,8 @@ if (isset($_POST['enviar'])){
     $stmt->execute();
     if($_POST['senha'] != $_POST['confSenha']){
         header('Location: cadastroErro.php');
-        exit();
+        exit;
+        
     }else{
         if ($stmt->rowCount() > 0) {
             header('Location: cadastroSucesso.php');
@@ -58,7 +59,7 @@ $conn = null;
     <div class ="box">
         <form action="formulario.php" method="post">
             <fieldset>
-            <legend><b>Cadastro de Clientes</b></legend>
+            <legend><b>Cadastro</b></legend>
             <br>
             <div class="inputBox">
                 <input type="text" name="nome" id="nome" class="inputUser" required>
