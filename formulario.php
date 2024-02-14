@@ -15,29 +15,34 @@ if (isset($_POST['enviar'])){
     $estado = $_POST['estado'];
     $endereco = $_POST['endereco'];
 
-    $inserir = "INSERT INTO usuarios (nome, email, senha, telefone, genero, data_nascimento, cidade, estado, endereco)
-    VALUES (:nome, :email, :senha, :telefone, :genero, :data_nascimento, :cidade, :estado, :endereco)";
-    $stmt = $conn->prepare($inserir);
-    $stmt->bindParam(":nome", $nome);
-    $stmt->bindParam(":email", $email);
-    $stmt->bindParam(":senha", $senha);
-    $stmt->bindParam(":telefone", $telefone);
-    $stmt->bindParam(":genero", $genero);
-    $stmt->bindParam(":data_nascimento", $dataNascimento);
-    $stmt->bindParam(":cidade", $cidade);
-    $stmt->bindParam(":estado", $estado);
-    $stmt->bindParam(":endereco", $endereco);
-    $stmt->execute();
     if($_POST['senha'] != $_POST['confSenha']){
         header('Location: cadastroErro.php');
         exit;
-        
-    }else{
-        if ($stmt->rowCount() > 0) {
-            header('Location: cadastroSucesso.php');
-        } else {
-            header('Location: cadastroErro.php');
-        }
+    }
+
+    $sql = "SELECT * FROM usuarios WHERE email = '$email'";
+    $result = $conn->query($sql);
+    
+    if ($result->rowCount() > 0) {
+        header('Location: cadastroErro.php');
+    } else {
+        header('Location: cadastroSucesso.php');
+
+        $inserir = "INSERT INTO usuarios (nome, email, senha, telefone, genero, data_nascimento, cidade, estado, endereco)
+        VALUES (:nome, :email, :senha, :telefone, :genero, :data_nascimento, :cidade, :estado, :endereco)";
+
+        $stmt = $conn->prepare($inserir);
+
+        $stmt->bindParam(":nome", $nome);
+        $stmt->bindParam(":email", $email);
+        $stmt->bindParam(":senha", $senha);
+        $stmt->bindParam(":telefone", $telefone);
+        $stmt->bindParam(":genero", $genero);
+        $stmt->bindParam(":data_nascimento", $dataNascimento);
+        $stmt->bindParam(":cidade", $cidade);
+        $stmt->bindParam(":estado", $estado);
+        $stmt->bindParam(":endereco", $endereco);
+        $stmt->execute();
     }
 }
 
