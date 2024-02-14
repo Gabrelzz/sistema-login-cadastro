@@ -34,31 +34,15 @@ if (!isset($_SESSION['email']) == true AND (!isset($_SESSION['senha'])) == true)
             <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Início</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Teste</a>
-            </li>
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Opções
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Teste</a>
-            </li>
         </ul>
         <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+            <a href="" class="btn btn-danger me-5">Sair</a>
         </form>
         </div>
     </div>
 </nav>
-        <h1> Sistema acessado.</h1>  
+<?php
+    echo "<h1>Bem vindo, <u>$logado</u></h1>";
+?>
 </body>
 </html>
