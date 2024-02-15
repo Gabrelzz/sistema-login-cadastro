@@ -10,7 +10,7 @@
     <h1>Bem vindo!</h1>
     <div class="box">
         <a href="login.php">Login</a>
-        <a href="formulario.php">Cadastre-se</a>
+        <a href="form.php">Cadastre-se</a>
     </div>
 </body>
 </html>

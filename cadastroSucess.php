@@ -11,6 +11,6 @@
     <h2> Agora faça seu login!</h2>
     <div class="box">
         <a href="login.php">Login</a>
-    </div>
+    </div> 
 </body>
 </html>

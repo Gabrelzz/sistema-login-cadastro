@@ -24,7 +24,7 @@ session_start();
             $_SESSION['email'] = $email;
             $_SESSION['senha'] = $senha;
 
-            header('Location: sistema.php');
+            header('Location: system.php');
         }
         print_r($stmt);
 

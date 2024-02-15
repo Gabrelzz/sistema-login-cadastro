@@ -24,9 +24,10 @@ if (isset($_POST['enviar'])){
     $result = $conn->query($sql);
     
     if ($result->rowCount() > 0) {
-        header('Location: cadastroErro.php');
+        header('Location: cadastroError.php');
+        
     } else {
-        header('Location: cadastroSucesso.php');
+        header('Location: cadastroSucess.php');
 
         $inserir = "INSERT INTO usuarios (nome, email, senha, telefone, genero, data_nascimento, cidade, estado, endereco)
         VALUES (:nome, :email, :senha, :telefone, :genero, :data_nascimento, :cidade, :estado, :endereco)";
@@ -56,13 +57,14 @@ $conn = null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário</title>
     <link rel="stylesheet" href="css/style-form.css">
+
 </head>
 <body>
     <p class ="botao">
     <a id="voltar" href="home.php" role="button">Voltar</a>
     </p>
     <div class ="box">
-        <form action="formulario.php" method="post">
+        <form action="form.php" method="post">
             <fieldset>
             <legend><b>Cadastro</b></legend>
             <br>
@@ -103,18 +105,18 @@ $conn = null;
             <input type="date" name="data-nascimento" id="data-nascimento" required>
             <br><br><br>
             <div class="inputBox">
-                <input type="text" name="cidade" id="cidade" class="inputUser" required>
-                <label for="cidade" class="labelInput">Cidade</label>
-            </div>
-            <br><br>
-            <div class="inputBox">
                 <input type="text" name="estado" id="estado" class="inputUser" required>
                 <label for="estado"class="labelInput">Estado</label>
             </div>
             <br><br>
             <div class="inputBox">
-                <input type="text" name="endereco" id="endereco" class="inputUser" required>
-                <label for="endereco" class="labelInput">Endereço</label>
+                <input type="text" name="cidade" id="cidade" class="inputUser" required>
+                <label for="cidade" class="labelInput">Cidade</label>
+            </div>
+            <br><br>
+            <div class="inputBox">
+            <input type="text" name="endereco" id="endereco" class="inputUser" required>
+                <label for="endereco" class="labelInput" >Endereço</label>
             </div>
             <br><br>
             <input type="submit" name="enviar" id="enviar">
