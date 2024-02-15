@@ -8,6 +8,6 @@
 </head>
 <body>
     <h1>Erro no seu cadastro!</h1>
-    <h1>Este email já existe, tente outro novamente.</h1>
+    <h2>Este email já existe, tente outro novamente.</h2>
 </body>
 </html>
