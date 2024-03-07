@@ -3,15 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Tela de Login</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        
+        .btn-voltar {
+            display: inline-block;
+            padding: 10px 20px;
+            background-image: linear-gradient(to right, rgb(0, 92, 197), rgb(18, 7, 139));
+            color: white; 
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px; 
+            transition: background-color 0.3s;
+        }
+
+        .btn-voltar:hover {
+            background-image: linear-gradient(to right, rgb(3, 81, 172), rgb(15, 6, 117));
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
-    <a class="btn btn-primary" href="home.php" role="button">Voltar</a>
+    <a href="index.php" class="btn-voltar">Voltar</a>
     <div class="tela-login">
         <h1>Login</h1>
         <form action ="loginTest.php" method="POST">
