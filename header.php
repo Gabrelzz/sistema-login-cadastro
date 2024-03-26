@@ -8,10 +8,6 @@
 </head>
 <body>
     <header class="header">
-        <div class="banner">
-            <img src="banner.jpg" alt="Banner do seu projeto">
-        </div>
-        <h1 class="title">My project/h1>
         <nav class="nav">
             <ul>
                 <li><a href="system.php">Home</a></li>
