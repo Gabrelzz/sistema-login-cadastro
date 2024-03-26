@@ -4,16 +4,16 @@ if (isset($_POST['enviar'])){
 
     require_once('config.php');
 
-    $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-    $confSenha = $_POST['confSenha'];
-    $telefone = $_POST['telefone'];
-    $genero = $_POST['genero'];
-    $dataNascimento = $_POST['data-nascimento'];
-    $cidade = $_POST['cidade'];
-    $estado = $_POST['estado'];
-    $endereco = $_POST['endereco'];
+    $nome = addslashes($_POST['nome']);
+    $email = addslashes($_POST['email']);
+    $senha = addslashes($_POST['senha']);
+    $confSenha = addslashes($_POST['confSenha']);
+    $telefone = addslashes($_POST['telefone']);
+    $genero = addslashes($_POST['genero']);
+    $dataNascimento = addslashes($_POST['data-nascimento']);
+    $cidade = addslashes($_POST['cidade']);
+    $estado = addslashes($_POST['estado']);
+    $endereco = addslashes($_POST['endereco']);
 
     if($_POST['senha'] != $_POST['confSenha']){
         header('Location: cadastroErro.php');
@@ -29,6 +29,8 @@ if (isset($_POST['enviar'])){
     } else {
         header('Location: cadastroSucess.php');
 
+        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
         $inserir = "INSERT INTO usuarios (nome, email, senha, telefone, genero, data_nascimento, cidade, estado, endereco)
         VALUES (:nome, :email, :senha, :telefone, :genero, :data_nascimento, :cidade, :estado, :endereco)";
 
@@ -36,7 +38,7 @@ if (isset($_POST['enviar'])){
 
         $stmt->bindParam(":nome", $nome);
         $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":senha", $senha);
+        $stmt->bindParam(":senha", $senhaHash);
         $stmt->bindParam(":telefone", $telefone);
         $stmt->bindParam(":genero", $genero);
         $stmt->bindParam(":data_nascimento", $dataNascimento);

@@ -6,6 +6,13 @@ session_start();
 
         $email = $_POST['email'];
         $senha = $_POST['senha'];
+        
+
+
+
+            //ARRUMAR LOGIN COM PASSWORD_VERIFY()
+
+
 
         $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
         $conn->prepare($sql);

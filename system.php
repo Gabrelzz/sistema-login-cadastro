@@ -11,6 +11,7 @@ if (!isset($_SESSION['email']) == true AND (!isset($_SESSION['senha'])) == true)
     $logado = $_SESSION['email'];
 
 }
+include 'header.php';
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +44,7 @@ if (!isset($_SESSION['email']) == true AND (!isset($_SESSION['senha'])) == true)
 </nav>
 <?php
     echo "<h1>Bem vindo, <u>$logado</u></h1>";
+    include 'footer.php'; 
 ?>
 </body>
 </html>
