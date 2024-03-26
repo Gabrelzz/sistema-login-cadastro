@@ -1,10 +1,11 @@
-/* Estilos para o cabeçalho */
+
 .header {
-    background-color: #333; /* Cor de fundo do cabeçalho */
+    background-color: #222; 
     color: #fff; /* Cor do texto */
-    padding: 20px; /* Espaçamento interno */
-    text-align: center; /* Alinhamento do texto */
+    padding: 20px; 
+    text-align: center; 
 }
+
 
 .title {
     margin-top: 0; /* Remover margem superior do título */
@@ -33,15 +34,14 @@
     text-decoration: none; /* Remover sublinhado dos links */
 }
 
-/* Estilos para o rodapé */
 .footer {
-    background-color: #333; /* Cor de fundo do rodapé */
-    color: #fff; /* Cor do texto */
-    padding: 20px; /* Espaçamento interno */
-    text-align: center; /* Alinhamento do texto */
+    background-color: #222; 
+    color: #fff; 
+    padding: 20px; 
+    text-align: center;
     position: fixed; /* Fixa o rodapé na parte inferior da viewport */
     bottom: 0; /* Alinha o rodapé na parte inferior */
-    width: 100%; /* Largura total */
+    width: 100%;
 }
 
 .social-media a {
